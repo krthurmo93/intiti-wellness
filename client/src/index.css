@@ -1,0 +1,677 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================================
+   GOLDEN DAWN THEME - CSS Variables & Animations
+   ===================================================== */
+
+:root {
+  /* Golden Dawn Color Palette - Updated with user-specified high-contrast colors */
+  --gd-gold: #F5C86A;
+  --gd-deep-dawn: #EFA045;
+  --gd-sunrise-coral: #E2755B;
+  --gd-light-gold-glow: #FFE7B3;
+  --gd-warm-sand: #F2D7B6;
+  --gd-deep-contrast: #1B1A17;
+  --gd-bg-gradient-start: #FFE7B3;
+  --gd-bg-gradient-mid: #EFA045;
+  --gd-bg-gradient-end: #E2755B;
+  --gd-accent: #E4A851;
+  --gd-accent-soft: #FFE7B3;
+  
+  /* Card/Surface styling - Warm golden tones (user specified) */
+  --gd-surface-bg: linear-gradient(135deg, #F7D49C 0%, #E7A55A 100%);
+  --gd-surface-solid: #F4C98B;
+  --gd-surface-alt: #E7A55A;
+  --gd-surface-border: rgba(229, 167, 84, 0.35);
+  --gd-surface-shadow: 0 4px 20px rgba(229, 167, 84, 0.25);
+  --gd-surface-inner-glow: inset 0 1px 2px rgba(255, 255, 255, 0.25);
+  
+  /* HIGH CONTRAST TEXT COLORS (user specified) */
+  --gd-text-primary: #4A2E0B;
+  --gd-text-secondary: #5C3B15;
+  --gd-text-placeholder: #7A5735;
+  --gd-text-muted: #6B4A23;
+  
+  /* Legacy aliases */
+  --gd-surface-text: #4A2E0B;
+  --gd-surface-text-muted: #5C3B15;
+  --gd-card-bg: linear-gradient(135deg, #F7D49C 0%, #E7A55A 100%);
+  --gd-card-border: rgba(229, 167, 84, 0.35);
+  --gd-text-main: #4A2E0B;
+  --gd-text-soft: #5C3B15;
+  --gd-text-light: #FFFAF5;
+  --gd-chip-bg: rgba(244, 201, 139, 0.3);
+  --gd-chip-border: rgba(229, 167, 84, 0.5);
+  
+  /* Button styling */
+  --gd-button-bg: linear-gradient(90deg, #F7D49C, #E7A55A);
+  --gd-button-text: #4A2E0B;
+  --gd-button-glow: 0 4px 16px rgba(229, 167, 84, 0.35);
+  --gd-button-hover-bg: linear-gradient(90deg, #E3A968, #CF8745);
+  --gd-button-hover-glow: 0 6px 20px rgba(229, 167, 84, 0.45);
+  
+  /* Input styling */
+  --gd-input-bg: #F4C98B;
+  --gd-input-border: rgba(229, 167, 84, 0.4);
+  --gd-input-text: #4A2E0B;
+  --gd-input-placeholder: #7A5735;
+  --gd-input-focus-border: #D98F43;
+  --gd-input-focus-shadow: 0 0 0 2px rgba(217, 143, 67, 0.25);
+  
+  /* Icon colors */
+  --gd-icon-active: #E4A851;
+  --gd-icon-tint: #D98F43;
+}
+
+/* Golden Dawn Gradient Drift Animation */
+@keyframes gdGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Golden Dawn Breathing Glow Animation */
+@keyframes gdGlow {
+  0% { box-shadow: 0 0 0 0 rgba(255, 207, 113, 0.35); }
+  50% { box-shadow: 0 0 25px 4px rgba(255, 207, 113, 0.5); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 207, 113, 0.35); }
+}
+
+/* Golden Dawn Floating Animation */
+@keyframes gdFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+
+/* Golden Dawn Card Glow Animation */
+@keyframes gdCardGlow {
+  0% { box-shadow: 0 0 15px rgba(255, 207, 113, 0.15), inset 0 0 10px rgba(255, 207, 113, 0.05); }
+  50% { box-shadow: 0 0 25px rgba(255, 207, 113, 0.25), inset 0 0 15px rgba(255, 207, 113, 0.08); }
+  100% { box-shadow: 0 0 15px rgba(255, 207, 113, 0.15), inset 0 0 10px rgba(255, 207, 113, 0.05); }
+}
+
+/* Golden Dawn Gradient Background Class - Official Linear */
+.gd-gradient-bg {
+  background: linear-gradient(180deg, #FFE7B3 0%, #EFA045 40%, #E2755B 100%);
+  background-size: 100% 100%;
+}
+
+/* Golden Dawn Radial Gradient Background - Official Radial */
+.gd-radial-bg {
+  background: radial-gradient(circle, #F5C86A 0%, #E2755B 100%);
+}
+
+/* Golden Dawn Breathing Glow Class */
+.gd-glow {
+  animation: gdGlow 4s ease-in-out infinite;
+}
+
+/* Golden Dawn Float Animation Class */
+.gd-float {
+  animation: gdFloat 5s ease-in-out infinite;
+}
+
+/* Golden Dawn Card Glow Class */
+.gd-card-glow {
+  animation: gdCardGlow 6s ease-in-out infinite;
+}
+
+/* Golden Dawn Primary Button - Official Tokens */
+.gd-button-primary {
+  background: linear-gradient(90deg, #F5C86A, #EFA045);
+  border: none;
+  color: #1B1A17;
+  box-shadow: 0 0 12px rgba(245, 200, 106, 0.45);
+  font-weight: 600;
+}
+
+.gd-button-primary:hover {
+  box-shadow: 0 6px 25px rgba(245, 200, 106, 0.5);
+}
+
+/* Golden Dawn Secondary Button (Outline) */
+.gd-button-secondary {
+  background: transparent;
+  border: 2px solid var(--gd-gold);
+  color: var(--gd-gold);
+}
+
+.gd-button-secondary:hover {
+  background: rgba(245, 200, 106, 0.1);
+}
+
+/* Button/Card interaction - subtle scale */
+.gd-press-effect {
+  transition: transform 0.15s ease;
+}
+
+.gd-press-effect:active {
+  transform: scale(0.97);
+}
+
+/* Hover lift effect for desktop */
+@media (hover: hover) {
+  .gd-hover-lift {
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .gd-hover-lift:hover {
+    transform: translateY(-2px);
+    border-color: var(--gd-accent);
+  }
+}
+
+/* Golden Dawn Surface Card - Warm translucent background */
+.gd-surface-card {
+  background: var(--gd-surface-bg) !important;
+  border-color: var(--gd-surface-border) !important;
+  box-shadow: var(--gd-surface-shadow), var(--gd-surface-inner-glow) !important;
+  backdrop-filter: blur(8px);
+  color: var(--gd-text-primary);
+}
+
+.gd-surface-card:hover {
+  box-shadow: 0 6px 24px rgba(229, 167, 84, 0.35), var(--gd-surface-inner-glow) !important;
+}
+
+/* HIGH CONTRAST text colors inside Golden Dawn surface cards */
+.gd-surface-card h1,
+.gd-surface-card h2,
+.gd-surface-card h3,
+.gd-surface-card h4,
+.gd-surface-card h5 {
+  color: var(--gd-text-primary) !important;
+}
+
+.gd-surface-card p,
+.gd-surface-card span {
+  color: var(--gd-text-secondary);
+}
+
+/* Golden Dawn Input/Textarea Styling */
+.gd-input {
+  background: var(--gd-input-bg) !important;
+  border: 1px solid var(--gd-input-border) !important;
+  color: var(--gd-input-text) !important;
+}
+
+.gd-input::placeholder {
+  color: var(--gd-input-placeholder) !important;
+  opacity: 1;
+}
+
+.gd-input:focus {
+  border-color: var(--gd-input-focus-border) !important;
+  box-shadow: var(--gd-input-focus-shadow) !important;
+  outline: none;
+}
+
+/* Golden Dawn Button Styling */
+.gd-button-primary {
+  background: var(--gd-button-bg) !important;
+  color: var(--gd-button-text) !important;
+  box-shadow: var(--gd-button-glow) !important;
+  border: none !important;
+}
+
+.gd-button-primary:hover {
+  background: var(--gd-button-hover-bg) !important;
+  box-shadow: var(--gd-button-hover-glow) !important;
+}
+
+.gd-button-secondary {
+  background: var(--gd-chip-bg) !important;
+  color: var(--gd-button-text) !important;
+  border: 2px solid var(--gd-accent) !important;
+}
+
+.gd-button-secondary:hover {
+  background: rgba(244, 201, 139, 0.5) !important;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .gd-gradient-bg {
+    animation: none;
+  }
+  
+  .gd-glow {
+    animation: none;
+    box-shadow: 0 0 15px rgba(255, 207, 113, 0.3);
+  }
+  
+  .gd-float {
+    animation: none;
+  }
+  
+  .gd-card-glow {
+    animation: none;
+    box-shadow: 0 0 20px rgba(255, 207, 113, 0.2);
+  }
+  
+  .gd-press-effect:active {
+    transform: none;
+  }
+  
+  .gd-hover-lift:hover {
+    transform: none;
+  }
+}
+
+/* Golden Dawn base gradient for page backgrounds */
+.gd-base-gradient {
+  background: linear-gradient(
+    135deg,
+    #FFE7B3 0%,
+    #FFD992 20%,
+    #EFA045 50%,
+    #E2755B 80%,
+    #C94B4B 100%
+  );
+}
+
+/* =====================================================
+   GOLDEN DAWN GLOBAL THEME CLASS
+   Apply to root element when golden_dawn theme is active
+   ===================================================== */
+
+.golden-dawn {
+  --background: 42 50% 91%;
+  --foreground: 30 8% 11%;
+  --border: 38 40% 75%;
+  --card: 30 30% 15%;
+  --card-foreground: 42 30% 95%;
+  --card-border: 38 50% 50%;
+  --primary: 42 85% 68%;
+  --primary-foreground: 30 8% 11%;
+  --secondary: 30 60% 60%;
+  --secondary-foreground: 30 8% 11%;
+  --muted: 38 30% 75%;
+  --muted-foreground: 30 20% 35%;
+  --accent: 42 85% 68%;
+  --accent-foreground: 30 8% 11%;
+  --ring: 42 85% 68%;
+  --input: 38 40% 65%;
+}
+
+/* Golden Dawn icon recoloring - scoped to specific elements */
+.golden-dawn .gd-icon {
+  color: var(--gd-gold);
+}
+
+.golden-dawn .gd-icon-accent {
+  color: var(--gd-deep-dawn);
+}
+
+/* Golden Dawn active nav icons */
+.golden-dawn [data-active="true"] svg {
+  color: var(--gd-gold);
+}
+
+/* Golden Dawn Card styling */
+.golden-dawn [data-slot="card"] {
+  background: var(--gd-card-bg);
+  border-color: var(--gd-card-border);
+  backdrop-filter: blur(10px);
+}
+
+/* Golden Dawn text hierarchy */
+.golden-dawn .text-foreground {
+  color: var(--gd-text-main);
+}
+
+.golden-dawn .text-muted-foreground {
+  color: var(--gd-text-soft);
+}
+
+/* Golden Dawn dividers and borders */
+.golden-dawn hr,
+.golden-dawn [role="separator"] {
+  border-color: rgba(245, 200, 106, 0.3);
+}
+
+/* Golden Dawn inputs */
+.golden-dawn input,
+.golden-dawn textarea,
+.golden-dawn select {
+  border-color: var(--gd-card-border);
+  background: rgba(27, 26, 23, 0.6);
+  color: var(--gd-text-light);
+}
+
+.golden-dawn input::placeholder,
+.golden-dawn textarea::placeholder {
+  color: rgba(255, 250, 245, 0.5);
+}
+
+/* Golden Dawn checkboxes, toggles, sliders */
+.golden-dawn [role="checkbox"][data-state="checked"],
+.golden-dawn [role="switch"][data-state="checked"] {
+  background: linear-gradient(135deg, var(--gd-gold), var(--gd-deep-dawn));
+  border-color: var(--gd-gold);
+}
+
+.golden-dawn [role="slider"] [data-slot="track"] {
+  background: rgba(245, 200, 106, 0.2);
+}
+
+.golden-dawn [role="slider"] [data-slot="thumb"] {
+  background: var(--gd-gold);
+  border-color: var(--gd-deep-dawn);
+}
+
+/* Golden Dawn focus rings */
+.golden-dawn *:focus-visible {
+  outline-color: var(--gd-gold);
+  box-shadow: 0 0 0 2px rgba(245, 200, 106, 0.3);
+}
+
+/* Golden Dawn tabs and navigation */
+.golden-dawn [role="tablist"] {
+  border-color: rgba(245, 200, 106, 0.3);
+}
+
+.golden-dawn [role="tab"][data-state="active"] {
+  background: linear-gradient(135deg, var(--gd-gold), var(--gd-deep-dawn));
+  color: var(--gd-deep-contrast);
+}
+
+/* Golden Dawn badges and chips */
+.golden-dawn [data-slot="badge"] {
+  background: var(--gd-chip-bg);
+  border-color: var(--gd-chip-border);
+  color: var(--gd-gold);
+}
+
+/* Golden Dawn progress bars */
+.golden-dawn [role="progressbar"] [data-slot="indicator"] {
+  background: linear-gradient(90deg, var(--gd-gold), var(--gd-deep-dawn));
+}
+
+/* LIGHT MODE */
+:root {
+  --button-outline: rgba(0,0,0, .10);
+  --badge-outline: rgba(0,0,0, .05);
+  --opaque-button-border-intensity: -8;
+  --elevate-1: rgba(0,0,0, .03);
+  --elevate-2: rgba(0,0,0, .08);
+  --background: 40 5% 98%;
+  --foreground: 40 8% 12%;
+  --border: 40 6% 90%;
+  --card: 40 5% 96%;
+  --card-foreground: 40 8% 12%;
+  --card-border: 40 6% 92%;
+  --sidebar: 40 5% 94%;
+  --sidebar-foreground: 40 8% 12%;
+  --sidebar-border: 40 6% 88%;
+  --sidebar-primary: 38 85% 48%;
+  --sidebar-primary-foreground: 38 5% 98%;
+  --sidebar-accent: 40 8% 88%;
+  --sidebar-accent-foreground: 40 8% 12%;
+  --sidebar-ring: 38 85% 48%;
+  --popover: 40 5% 93%;
+  --popover-foreground: 40 8% 12%;
+  --popover-border: 40 6% 87%;
+  --primary: 38 85% 48%;
+  --primary-foreground: 38 5% 98%;
+  --secondary: 40 8% 88%;
+  --secondary-foreground: 40 8% 12%;
+  --muted: 40 8% 90%;
+  --muted-foreground: 40 8% 28%;
+  --accent: 40 12% 92%;
+  --accent-foreground: 40 8% 12%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 5% 98%;
+  --input: 40 10% 60%;
+  --ring: 38 85% 48%;
+  --chart-1: 38 85% 42%;
+  --chart-2: 200 85% 42%;
+  --chart-3: 280 70% 45%;
+  --chart-4: 160 65% 38%;
+  --chart-5: 20 75% 48%;
+  --font-sans: Open Sans, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: .5rem;
+  --shadow-2xs: 0px 2px 0px 0px hsl(40 6% 20% / 0.00);
+  --shadow-xs: 0px 2px 0px 0px hsl(40 6% 20% / 0.00);
+  --shadow-sm: 0px 2px 0px 0px hsl(40 6% 20% / 0.00), 0px 1px 2px -1px hsl(40 6% 20% / 0.00);
+  --shadow: 0px 2px 0px 0px hsl(40 6% 20% / 0.00), 0px 1px 2px -1px hsl(40 6% 20% / 0.00);
+  --shadow-md: 0px 2px 0px 0px hsl(40 6% 20% / 0.00), 0px 2px 4px -1px hsl(40 6% 20% / 0.00);
+  --shadow-lg: 0px 2px 0px 0px hsl(40 6% 20% / 0.00), 0px 4px 6px -1px hsl(40 6% 20% / 0.00);
+  --shadow-xl: 0px 2px 0px 0px hsl(40 6% 20% / 0.00), 0px 8px 10px -1px hsl(40 6% 20% / 0.00);
+  --shadow-2xl: 0px 2px 0px 0px hsl(40 6% 20% / 0.00);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+
+/* Fallback for older browsers */
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+}
+
+.dark {
+  --button-outline: rgba(255,255,255, .10);
+  --badge-outline: rgba(255,255,255, .05);
+  --opaque-button-border-intensity: 9;
+  --elevate-1: rgba(255,255,255, .04);
+  --elevate-2: rgba(255,255,255, .09);
+  --background: 40 4% 8%;
+  --foreground: 40 5% 96%;
+  --border: 40 5% 18%;
+  --card: 40 4% 10%;
+  --card-foreground: 40 5% 96%;
+  --card-border: 40 5% 14%;
+  --sidebar: 40 4% 12%;
+  --sidebar-foreground: 40 5% 96%;
+  --sidebar-border: 40 5% 16%;
+  --sidebar-primary: 38 85% 52%;
+  --sidebar-primary-foreground: 40 4% 8%;
+  --sidebar-accent: 40 8% 16%;
+  --sidebar-accent-foreground: 40 5% 96%;
+  --sidebar-ring: 38 85% 52%;
+  --popover: 40 4% 14%;
+  --popover-foreground: 40 5% 96%;
+  --popover-border: 40 5% 18%;
+  --primary: 38 85% 52%;
+  --primary-foreground: 40 4% 8%;
+  --secondary: 40 8% 18%;
+  --secondary-foreground: 40 5% 96%;
+  --muted: 40 8% 16%;
+  --muted-foreground: 40 8% 75%;
+  --accent: 40 12% 15%;
+  --accent-foreground: 40 5% 96%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 5% 98%;
+  --input: 40 10% 35%;
+  --ring: 38 85% 52%;
+  --chart-1: 38 85% 65%;
+  --chart-2: 200 85% 65%;
+  --chart-3: 280 70% 70%;
+  --chart-4: 160 65% 60%;
+  --chart-5: 20 75% 68%;
+  --shadow-2xs: 0px 2px 0px 0px hsl(40 6% 0% / 0.00);
+  --shadow-xs: 0px 2px 0px 0px hsl(40 6% 0% / 0.00);
+  --shadow-sm: 0px 2px 0px 0px hsl(40 6% 0% / 0.00), 0px 1px 2px -1px hsl(40 6% 0% / 0.00);
+  --shadow: 0px 2px 0px 0px hsl(40 6% 0% / 0.00), 0px 1px 2px -1px hsl(40 6% 0% / 0.00);
+  --shadow-md: 0px 2px 0px 0px hsl(40 6% 0% / 0.00), 0px 2px 4px -1px hsl(40 6% 0% / 0.00);
+  --shadow-lg: 0px 2px 0px 0px hsl(40 6% 0% / 0.00), 0px 4px 6px -1px hsl(40 6% 0% / 0.00);
+  --shadow-xl: 0px 2px 0px 0px hsl(40 6% 0% / 0.00), 0px 8px 10px -1px hsl(40 6% 0% / 0.00);
+  --shadow-2xl: 0px 2px 0px 0px hsl(40 6% 0% / 0.00);
+
+/* Fallback for older browsers */
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/**
+ * Using the elevate system.
+ * Automatic contrast adjustment.
+ *
+ * <element className="hover-elevate" />
+ * <element className="active-elevate-2" />
+ *
+ * // Using the tailwind utility when a data attribute is "on"
+ * <element className="toggle-elevate data-[state=on]:toggle-elevated" />
+ * // Or manually controlling the toggle state
+ * <element className="toggle-elevate toggle-elevated" />
+ *
+ * Elevation systems have to handle many states.
+ * - not-hovered, vs. hovered vs. active  (three mutually exclusive states)
+ * - toggled or not
+ * - focused or not (this is not handled with these utilities)
+ *
+ * Even without handling focused or not, this is six possible combinations that
+ * need to be distinguished from eachother visually.
+ */
+@layer utilities {
+
+  /* Hide ugly search cancel button in Chrome until we can style it properly */
+  input[type="search"]::-webkit-search-cancel-button {
+    @apply hidden;
+  }
+
+  /* Placeholder styling for contentEditable div */
+  [contenteditable][data-placeholder]:empty::before {
+    content: attr(data-placeholder);
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+  }
+
+  /* .no-default-hover-elevate/no-default-active-elevate is an escape hatch so consumers of
+   * buttons/badges can remove the automatic brightness adjustment on interactions
+   * and program their own. */
+  .no-default-hover-elevate {}
+
+  .no-default-active-elevate {}
+
+
+  /**
+   * Toggleable backgrounds go behind the content. Hoverable/active goes on top.
+   * This way they can stack/compound. Both will overlap the parent's borders!
+   * So borders will be automatically adjusted both on toggle, and hover/active,
+   * and they will be compounded.
+   */
+  .toggle-elevate::before,
+  .toggle-elevate-2::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: -1;
+    /* sits behind content but above backdrop */
+  }
+
+  .toggle-elevate.toggle-elevated::before {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.toggle-elevate::before {
+    inset: -1px;
+  }
+
+  /* Does not work on elements with overflow:hidden! */
+  .hover-elevate:not(.no-default-hover-elevate),
+  .active-elevate:not(.no-default-active-elevate),
+  .hover-elevate-2:not(.no-default-hover-elevate),
+  .active-elevate-2:not(.no-default-active-elevate) {
+    position: relative;
+    z-index: 0;
+  }
+
+  .hover-elevate:not(.no-default-hover-elevate)::after,
+  .active-elevate:not(.no-default-active-elevate)::after,
+  .hover-elevate-2:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:not(.no-default-active-elevate)::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: 999;
+    /* sits in front of content */
+  }
+
+  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-1);
+  }
+
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
+    inset: -1px;
+  }
+}
