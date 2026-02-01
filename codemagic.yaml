@@ -42,8 +42,9 @@ workflows:
       - /tmp/xcodebuild_logs/*.log
       - ios/App/App.xcworkspace
     publishing:
-      app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_ID
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
-        submit_to_testflight: true
+      email:
+        recipients:
+          - z4xq6s4n6p@privaterelay.appleid.com
+        notify:
+          success: true
+          failure: true
