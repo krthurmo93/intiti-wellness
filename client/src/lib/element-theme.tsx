@@ -8,6 +8,7 @@ type ElementTheme = {
   setElement: (element: Element) => void;
   colors: {
     gradient: string;
+    gradientStyle: string; // CSS gradient for inline styles (iOS compatibility)
     accent: string;
     accentForeground: string;
     overlay: string;
@@ -32,6 +33,7 @@ type ElementTheme = {
 const elementColors: Record<Element, ElementTheme["colors"]> = {
   fire: {
     gradient: "from-orange-50 via-red-50 to-amber-50",
+    gradientStyle: "linear-gradient(to bottom, #fff7ed, #fef2f2, #fffbeb)",
     accent: "bg-gradient-to-br from-orange-400 to-red-500",
     accentForeground: "text-white",
     overlay: "bg-orange-500/5",
@@ -44,6 +46,7 @@ const elementColors: Record<Element, ElementTheme["colors"]> = {
   },
   water: {
     gradient: "from-cyan-50 via-blue-50 to-teal-50",
+    gradientStyle: "linear-gradient(to bottom, #ecfeff, #eff6ff, #f0fdfa)",
     accent: "bg-gradient-to-br from-cyan-400 to-blue-500",
     accentForeground: "text-white",
     overlay: "bg-blue-500/5",
@@ -56,6 +59,7 @@ const elementColors: Record<Element, ElementTheme["colors"]> = {
   },
   air: {
     gradient: "from-purple-50 via-indigo-50 to-sky-50",
+    gradientStyle: "linear-gradient(to bottom, #faf5ff, #eef2ff, #f0f9ff)",
     accent: "bg-gradient-to-br from-purple-400 to-indigo-500",
     accentForeground: "text-white",
     overlay: "bg-purple-500/5",
@@ -68,6 +72,7 @@ const elementColors: Record<Element, ElementTheme["colors"]> = {
   },
   earth: {
     gradient: "from-amber-50 via-stone-50 to-green-50",
+    gradientStyle: "linear-gradient(to bottom, #fffbeb, #fafaf9, #f0fdf4)",
     accent: "bg-gradient-to-br from-amber-500 to-green-600",
     accentForeground: "text-white",
     overlay: "bg-green-500/5",
@@ -80,6 +85,7 @@ const elementColors: Record<Element, ElementTheme["colors"]> = {
   },
   cosmic: {
     gradient: "from-slate-950 via-indigo-950 to-violet-950",
+    gradientStyle: "linear-gradient(to bottom, #020617, #1e1b4b, #2e1065)",
     accent: "bg-gradient-to-br from-violet-500 to-fuchsia-500",
     accentForeground: "text-white",
     overlay: "bg-violet-500/10",
@@ -91,10 +97,8 @@ const elementColors: Record<Element, ElementTheme["colors"]> = {
     isDark: true,
   },
   golden_dawn: {
-    // Golden Dawn premium theme - Initiate/Ascended only
-    // Uses warm sunrise gradient with gold accents (Tailwind-compatible stops)
-    // Official tokens: GD_PRIMARY_GOLD=#F5C86A, GD_DEEP_ORANGE=#EFA045, GD_CORAL=#E2755B
     gradient: "from-[#FFE7B3] via-[#EFA045] to-[#E2755B]",
+    gradientStyle: "linear-gradient(to bottom, #FFE7B3, #EFA045, #E2755B)",
     accent: "gd-button-primary",
     accentForeground: "text-[#1B1A17]",
     overlay: "bg-[#F5C86A]/10",
@@ -104,7 +108,6 @@ const elementColors: Record<Element, ElementTheme["colors"]> = {
     cardBg: "rgba(255, 255, 255, 0.15)",
     cardBorder: "rgba(245, 200, 106, 0.4)",
     isDark: false,
-    // Golden Dawn specific tokens
     accentPrimary: "#F5C86A",
     accentSecondary: "#EFA045",
     accentGlow: "rgba(245, 200, 106, 0.4)",
@@ -118,6 +121,7 @@ const elementColors: Record<Element, ElementTheme["colors"]> = {
 
 const defaultColors: ElementTheme["colors"] = {
   gradient: "from-amber-50/50 via-stone-50 to-amber-50/30",
+  gradientStyle: "linear-gradient(to bottom, #fffbeb, #fafaf9, #fffbeb)",
   accent: "bg-gradient-to-br from-amber-500 to-amber-600",
   accentForeground: "text-white",
   overlay: "bg-amber-500/3",

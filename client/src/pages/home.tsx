@@ -49,8 +49,8 @@ export default function Home() {
 
   return (
     <div 
-      className={`min-h-screen bg-gradient-to-b ${colors.gradient} transition-colors duration-500 relative ${bgClasses}`}
-      style={isGoldenDawn ? { background: `linear-gradient(to bottom, #FFE7B3, #EFA045, #E2755B)` } : {}}
+      className="min-h-screen transition-colors duration-500 relative"
+      style={{ background: colors.gradientStyle }}
     >
       {isGoldenDawn && (
         <div 

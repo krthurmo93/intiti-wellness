@@ -24,8 +24,8 @@ export default function EnergyWall() {
 
   return (
     <div 
-      className={`min-h-screen bg-gradient-to-b ${colors.gradient} transition-colors duration-500`}
-      style={isGoldenDawn ? { background: "linear-gradient(180deg, #FFE7B3 0%, #EFA045 40%, #E2755B 100%)" } : {}}
+      className="min-h-screen transition-colors duration-500"
+      style={{ background: colors.gradientStyle }}
     >
       <div className={`${colors.overlay} min-h-screen transition-colors duration-500`}>
         <div className="max-w-2xl mx-auto px-4 py-8 pb-32">

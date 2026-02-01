@@ -462,7 +462,8 @@ export default function Presence() {
 
   return (
     <div 
-      className={`min-h-screen bg-gradient-to-b ${colors.gradient} transition-colors duration-500`}
+      className="min-h-screen transition-colors duration-500"
+      style={{ background: colors.gradientStyle }}
     >
       <div className={`${colors.overlay} min-h-screen transition-colors duration-500`}>
         <div className="max-w-2xl mx-auto px-4 py-6 pb-24">

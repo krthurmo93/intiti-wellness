@@ -432,8 +432,8 @@ export default function Subliminals() {
 
   return (
     <div 
-      className={`min-h-screen bg-gradient-to-b ${colors.gradient} transition-colors duration-500 ${bgClasses}`}
-      style={isGoldenDawn ? { background: `linear-gradient(to bottom, #FFE7B3, #EFA045, #E2755B)` } : {}}
+      className="min-h-screen transition-colors duration-500"
+      style={{ background: colors.gradientStyle }}
     >
       <div className={`${colors.overlay} min-h-screen transition-colors duration-500`}>
       <div className="container mx-auto px-4 py-6 pb-32 max-w-2xl">

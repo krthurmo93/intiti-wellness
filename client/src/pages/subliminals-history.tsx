@@ -248,8 +248,9 @@ export default function SubliminalsHistory() {
 
   return (
     <div 
-      className={`min-h-screen bg-gradient-to-b ${colors.gradient} transition-colors duration-500 ${bgClasses}`}
-          >
+      className="min-h-screen transition-colors duration-500"
+      style={{ background: colors.gradientStyle }}
+    >
       <div className="container mx-auto px-4 py-6 max-w-2xl">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
