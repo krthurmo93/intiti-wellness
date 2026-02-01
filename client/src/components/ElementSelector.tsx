@@ -127,7 +127,7 @@ export function ElementSelector({ onSelect, showTitle = true }: ElementSelectorP
                     : isSelected
                       ? `border-transparent bg-gradient-to-br ${elementColors} text-white shadow-lg`
                       : colors.isDark 
-                        ? "border-white/20 bg-white/5 text-white" 
+                        ? "border-violet-400/40 bg-violet-900/50 text-white" 
                         : "border-stone-200 bg-white/80 text-stone-700"
                 }`}
                 style={goldenDawnStyles}

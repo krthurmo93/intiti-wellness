@@ -389,9 +389,11 @@ export default function MirrorWork() {
                       onClick={() => setSelectedCategory(set.category)}
                       className={`p-4 rounded-xl text-center transition-all ${
                         isSelected ? "ring-2" : ""
-                      }`}
+                      } ${colors.isDark ? "bg-violet-900/50 border border-violet-400/30" : ""}`}
                       style={{ 
-                        backgroundColor: isSelected ? colors.accentPrimary + "30" : colors.cardBg,
+                        backgroundColor: colors.isDark 
+                          ? (isSelected ? "rgba(139, 92, 246, 0.4)" : "rgba(76, 29, 149, 0.5)")
+                          : (isSelected ? colors.accentPrimary + "30" : colors.cardBg),
                         borderColor: isSelected ? colors.accentPrimary : colors.cardBorder,
                         boxShadow: isSelected ? `0 0 0 2px ${colors.accentPrimary}` : "none"
                       }}
@@ -417,10 +419,10 @@ export default function MirrorWork() {
           {/* Speed Control - only show when camera not active */}
           {!cameraActive && (
             <Card 
-              className="p-4 mb-4"
+              className={`p-4 mb-4 ${colors.isDark ? "bg-violet-900/40 border-violet-400/30" : ""}`}
               style={{ 
-                backgroundColor: colors.cardBg,
-                borderColor: colors.cardBorder
+                backgroundColor: colors.isDark ? "rgba(76, 29, 149, 0.4)" : colors.cardBg,
+                borderColor: colors.isDark ? "rgba(167, 139, 250, 0.3)" : colors.cardBorder
               }}
             >
               <label 
@@ -451,10 +453,10 @@ export default function MirrorWork() {
                 className="overflow-hidden mb-4"
               >
                 <Card 
-                  className="p-4"
+                  className={`p-4 ${colors.isDark ? "bg-violet-900/40 border-violet-400/30" : ""}`}
                   style={{ 
-                    backgroundColor: colors.cardBg,
-                    borderColor: colors.cardBorder
+                    backgroundColor: colors.isDark ? "rgba(76, 29, 149, 0.4)" : colors.cardBg,
+                    borderColor: colors.isDark ? "rgba(167, 139, 250, 0.3)" : colors.cardBorder
                   }}
                 >
                   <h3 
@@ -545,10 +547,10 @@ export default function MirrorWork() {
             transition={{ duration: 0.5 }}
           >
             <Card 
-              className="overflow-hidden relative"
+              className={`overflow-hidden relative ${colors.isDark ? "bg-violet-900/40 border-violet-400/30" : ""}`}
               style={{ 
-                backgroundColor: colors.cardBg,
-                borderColor: colors.cardBorder
+                backgroundColor: colors.isDark ? "rgba(76, 29, 149, 0.4)" : colors.cardBg,
+                borderColor: colors.isDark ? "rgba(167, 139, 250, 0.3)" : colors.cardBorder
               }}
             >
               <div className="relative aspect-[3/4] bg-black">
