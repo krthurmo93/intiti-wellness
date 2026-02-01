@@ -13,13 +13,13 @@ import { GoldenDawnTheme } from "@/lib/golden-dawn-theme";
 import type { MoodOption, MoodEntry } from "@shared/schema";
 import { moodOptions } from "@shared/schema";
 
-const moodLabels: Record<MoodOption, { label: string; color: string }> = {
-  happy: { label: "Happy", color: "from-yellow-400 to-amber-500" },
-  calm: { label: "Calm", color: "from-teal-400 to-cyan-500" },
-  anxious: { label: "Anxious", color: "from-orange-400 to-red-400" },
-  tired: { label: "Tired", color: "from-slate-400 to-slate-500" },
-  overwhelmed: { label: "Overwhelmed", color: "from-purple-400 to-indigo-500" },
-  grateful: { label: "Grateful", color: "from-pink-400 to-rose-500" },
+const moodLabels: Record<MoodOption, { label: string; color: string; gradient: string }> = {
+  happy: { label: "Happy", color: "from-yellow-400 to-amber-500", gradient: "linear-gradient(to right, #facc15, #f59e0b)" },
+  calm: { label: "Calm", color: "from-teal-400 to-cyan-500", gradient: "linear-gradient(to right, #2dd4bf, #06b6d4)" },
+  anxious: { label: "Anxious", color: "from-orange-400 to-red-400", gradient: "linear-gradient(to right, #fb923c, #f87171)" },
+  tired: { label: "Tired", color: "from-slate-400 to-slate-500", gradient: "linear-gradient(to right, #94a3b8, #64748b)" },
+  overwhelmed: { label: "Overwhelmed", color: "from-purple-400 to-indigo-500", gradient: "linear-gradient(to right, #c084fc, #6366f1)" },
+  grateful: { label: "Grateful", color: "from-pink-400 to-rose-500", gradient: "linear-gradient(to right, #f472b6, #f43f5e)" },
 };
 
 export function MoodCheckIn() {
@@ -104,8 +104,40 @@ export function MoodCheckIn() {
         }}
       >
             {moodOptions.map((mood) => {
-              const { label, color } = moodLabels[mood];
+              const { label, color, gradient } = moodLabels[mood];
               const isSelected = selectedMood === mood;
+              
+              // Comprehensive inline styles for iOS WebView compatibility
+              const moodButtonStyles: React.CSSProperties = {
+                borderRadius: '9999px',
+                paddingLeft: '1rem',
+                paddingRight: '1rem',
+                paddingTop: '0.5rem',
+                paddingBottom: '0.5rem',
+                fontSize: '0.875rem',
+                fontWeight: 500,
+                transition: 'all 0.2s ease',
+                borderWidth: '1px',
+                borderStyle: 'solid',
+                ...(isSelected ? {
+                  background: gradient,
+                  color: 'white',
+                  borderColor: 'transparent',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                } : isGoldenDawn ? {
+                  background: GoldenDawnTheme.buttons.secondary.background,
+                  borderColor: GoldenDawnTheme.borders.gold,
+                  color: GoldenDawnTheme.buttons.secondary.textColor,
+                } : colors.isDark ? {
+                  background: 'rgba(139, 92, 246, 0.1)',
+                  borderColor: 'rgba(167, 139, 250, 0.5)',
+                  color: '#ede9fe',
+                } : {
+                  background: '#fafaf9',
+                  borderColor: '#d6d3d1',
+                  color: '#44403c',
+                }),
+              };
               
               return (
                 <Button
@@ -121,15 +153,7 @@ export function MoodCheckIn() {
                           ? "border-violet-400/50 bg-violet-500/10 text-violet-100" 
                           : "border-stone-300 bg-stone-50 text-stone-700"
                   }`}
-                  style={!isSelected ? (isGoldenDawn ? {
-                    background: GoldenDawnTheme.buttons.secondary.background,
-                    borderColor: GoldenDawnTheme.borders.gold,
-                    color: GoldenDawnTheme.buttons.secondary.textColor,
-                  } : {
-                    boxShadow: colors.isDark 
-                      ? 'inset 0 1px 0 0 rgba(167, 139, 250, 0.1)' 
-                      : 'inset 0 1px 0 0 rgba(255, 255, 255, 0.5)'
-                  }) : undefined}
+                  style={moodButtonStyles}
                   data-testid={`button-mood-${mood}`}
                 >
                   {label}
