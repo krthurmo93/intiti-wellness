@@ -107,14 +107,14 @@ export default function OnboardingAccount() {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
       transition={{ duration: 0.4 }}
-      className="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-b from-gray-50 to-white"
+      className="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-b from-slate-950 via-indigo-950 to-violet-950"
     >
       <div className="w-full max-w-md">
         <Button
           variant="ghost"
           size="icon"
           onClick={() => setLocation("/onboarding/spiritual-style")}
-          className="mb-8 text-gray-500"
+          className="mb-8 text-violet-300"
           data-testid="button-back"
         >
           <ArrowLeft className="w-5 h-5" />
@@ -130,18 +130,18 @@ export default function OnboardingAccount() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.4, delay: 0.2, type: "spring" }}
-            className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg"
+            className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-violet-500/30"
           >
             <Sparkles className="w-8 h-8 text-white" />
           </motion.div>
 
           <h2 
-            className="font-serif text-3xl font-light text-gray-900 mb-3"
+            className="font-serif text-3xl font-light text-white mb-3"
             data-testid="text-account-title"
           >
             Almost there
           </h2>
-          <p className="text-gray-500 font-sans">
+          <p className="text-violet-200 font-sans">
             Create an account to save your progress across devices, or continue as a guest.
           </p>
         </motion.div>
@@ -153,18 +153,18 @@ export default function OnboardingAccount() {
           className="space-y-4"
         >
           <Card 
-            className="hover-elevate cursor-pointer border-gray-200 bg-white"
+            className="hover-elevate cursor-pointer border-violet-500/30 bg-white/5"
             onClick={handleCreateAccount}
           >
             <CardContent className="flex items-center gap-4 p-4">
-              <div className="w-12 h-12 rounded-full bg-indigo-50 flex items-center justify-center border border-indigo-100">
-                <UserPlus className="w-6 h-6 text-indigo-500" />
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 flex items-center justify-center border border-violet-500/30">
+                <UserPlus className="w-6 h-6 text-violet-400" />
               </div>
               <div className="text-left">
-                <h3 className="font-medium text-gray-900" data-testid="text-create-account">
+                <h3 className="font-medium text-white" data-testid="text-create-account">
                   Create account
                 </h3>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-violet-300">
                   Sync across devices and unlock all features
                 </p>
               </div>
@@ -172,18 +172,18 @@ export default function OnboardingAccount() {
           </Card>
 
           <Card 
-            className="hover-elevate cursor-pointer border-gray-200 bg-white"
+            className="hover-elevate cursor-pointer border-violet-500/20 bg-white/5"
             onClick={completeAsGuest}
           >
             <CardContent className="flex items-center gap-4 p-4">
-              <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center border border-gray-200">
-                <User className="w-6 h-6 text-gray-500" />
+              <div className="w-12 h-12 rounded-full bg-violet-500/10 flex items-center justify-center border border-violet-500/20">
+                <User className="w-6 h-6 text-violet-400" />
               </div>
               <div className="text-left">
-                <h3 className="font-medium text-gray-900" data-testid="text-guest">
+                <h3 className="font-medium text-white" data-testid="text-guest">
                   {isProcessing ? "Setting up..." : "Continue as guest"}
                 </h3>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-violet-300">
                   Data stored locally on this device
                 </p>
               </div>
@@ -199,7 +199,7 @@ export default function OnboardingAccount() {
         >
           <button
             onClick={handleSignIn}
-            className="text-indigo-500 font-medium flex items-center justify-center gap-2 mx-auto hover:underline"
+            className="text-violet-400 font-medium flex items-center justify-center gap-2 mx-auto hover:underline"
             data-testid="link-sign-in"
           >
             <LogIn className="w-4 h-4" />
