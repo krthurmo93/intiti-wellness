@@ -48,14 +48,14 @@ export default function OnboardingBirth() {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
       transition={{ duration: 0.4 }}
-      className="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-b from-slate-950 via-indigo-950 to-violet-950"
+      className="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-b from-gray-50 to-white"
     >
       <div className="w-full max-w-md">
         <Button
           variant="ghost"
           size="icon"
           onClick={() => setLocation("/onboarding/name")}
-          className="mb-8 text-violet-300"
+          className="mb-8 text-gray-500"
           data-testid="button-back"
         >
           <ArrowLeft className="w-5 h-5" />
@@ -68,12 +68,12 @@ export default function OnboardingBirth() {
           className="text-center mb-8"
         >
           <h2 
-            className="font-serif text-3xl font-light text-white mb-3"
+            className="font-serif text-3xl font-light text-gray-900 mb-3"
             data-testid="text-birth-title"
           >
             Your birth details
           </h2>
-          <p className="text-violet-200 font-sans">
+          <p className="text-gray-500 font-sans">
             Optional - helps personalize your astrological experience.
           </p>
         </motion.div>
@@ -85,36 +85,36 @@ export default function OnboardingBirth() {
           className="space-y-4"
         >
           <div className="relative flex items-center">
-            <Calendar className="absolute left-3 w-5 h-5 text-violet-400 z-10" />
+            <Calendar className="absolute left-3 w-5 h-5 text-indigo-500 z-10" />
             <Input
               type="date"
               value={dateOfBirth}
               onChange={(e) => setDateOfBirth(e.target.value)}
-              className="pl-12 h-auto py-3 border-violet-500/30 focus:border-violet-400 bg-white/5 text-white [color-scheme:dark]"
+              className="pl-12 h-auto py-3 border-gray-200 focus:border-indigo-400 bg-white text-gray-900"
               data-testid="input-date-of-birth"
             />
           </div>
 
           <div>
             <div className="relative flex items-center">
-              <Clock className="absolute left-3 w-5 h-5 text-violet-400 z-10" />
+              <Clock className="absolute left-3 w-5 h-5 text-indigo-500 z-10" />
               <Input
                 type="time"
                 value={timeOfBirth}
                 onChange={(e) => setTimeOfBirth(e.target.value)}
                 placeholder="Birth time (optional)"
-                className="pl-12 h-auto py-3 border-violet-500/30 focus:border-violet-400 bg-white/5 text-white [color-scheme:dark]"
+                className="pl-12 h-auto py-3 border-gray-200 focus:border-indigo-400 bg-white text-gray-900"
                 data-testid="input-time-of-birth"
               />
             </div>
-            <p className="text-xs text-violet-400/70 mt-1.5 ml-1">Optional - needed for rising sign</p>
+            <p className="text-xs text-gray-400 mt-1.5 ml-1">Optional - needed for rising sign</p>
           </div>
 
           <CityAutocomplete
             value={cityOfBirth}
             onChange={setCityOfBirth}
             placeholder="Birth city (optional)"
-            className="pl-12 h-auto py-3 border-violet-500/30 focus:border-violet-400 bg-white/5 text-white placeholder:text-violet-400/50"
+            className="pl-12 h-auto py-3 border-gray-200 focus:border-indigo-400 bg-white text-gray-900 placeholder:text-gray-400"
           />
         </motion.div>
 
@@ -127,7 +127,7 @@ export default function OnboardingBirth() {
           <Button
             variant="ghost"
             onClick={handleSkip}
-            className="text-violet-300"
+            className="text-gray-500"
             data-testid="button-skip"
           >
             Skip for now
@@ -135,7 +135,7 @@ export default function OnboardingBirth() {
 
           <Button
             onClick={handleNext}
-            className="px-8 py-6 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-medium shadow-md shadow-violet-500/30"
+            className="px-8 py-6 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white font-medium shadow-md"
             data-testid="button-next"
           >
             Next
