@@ -56,7 +56,7 @@ export default function DreamJournalBeta() {
   const { isAuthenticated, isLoading: authLoading } = useAuth();
   const { toast } = useToast();
 
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  // All features are now free and accessible - no beta check needed
   const [showForm, setShowForm] = useState(false);
   const [expandedDream, setExpandedDream] = useState<string | null>(null);
   
@@ -65,23 +65,14 @@ export default function DreamJournalBeta() {
   const [selectedMood, setSelectedMood] = useState<string | null>(null);
   const [date, setDate] = useState(format(new Date(), "yyyy-MM-dd"));
 
-  useEffect(() => {
-    const betaEnabled = getBetaFeaturesEnabled();
-    if (!betaEnabled) {
-      setLocation("/");
-    } else {
-      setIsAuthorized(true);
-    }
-  }, [setLocation]);
-
   const { data: dreams = [], isLoading: dreamsLoading } = useQuery<SelectDreamEntry[]>({
     queryKey: ['/api/auth/dreams'],
-    enabled: isAuthenticated && isAuthorized,
+    enabled: isAuthenticated,
   });
 
   const { data: usage } = useQuery<{ used: number; limit: number; remaining: number }>({
     queryKey: ['/api/auth/dreams/usage'],
-    enabled: isAuthenticated && isAuthorized,
+    enabled: isAuthenticated,
   });
 
   const createDreamMutation = useMutation({
@@ -148,7 +139,7 @@ export default function DreamJournalBeta() {
     });
   };
 
-  if (!isAuthorized || authLoading) {
+  if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div>Loading...</div>

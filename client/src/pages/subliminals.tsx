@@ -162,7 +162,7 @@ export default function Subliminals() {
   const { isAuthenticated, user } = useAuth();
   const { toast } = useToast();
 
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  // All features are now free and accessible - no beta check needed
   const [selectedCategory, setSelectedCategory] = useState<SubliminalCategory>("self_worth_confidence");
   const [intention, setIntention] = useState("");
   const [selectedBackground, setSelectedBackground] = useState<SubliminalBackground>("ocean_calm"); // TEST MODE: Only ocean_calm enabled
@@ -184,16 +184,7 @@ export default function Subliminals() {
   const isPausedRef = useRef(false);
   const speechRef = useRef<SpeechSynthesisUtterance | null>(null);
 
-  const betaEnabled = getBetaFeaturesEnabled();
-
-  useEffect(() => {
-    const betaEnabled = getBetaFeaturesEnabled();
-    if (!betaEnabled) {
-      setLocation("/");
-    } else {
-      setIsAuthorized(true);
-    }
-  }, [setLocation]);
+  // All features are now free and accessible - no beta check needed
 
   useEffect(() => {
     return () => {
@@ -429,14 +420,6 @@ export default function Subliminals() {
     setIsPlaying(false);
     setIsPaused(false);
   };
-
-  if (!isAuthorized) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div>Loading...</div>
-      </div>
-    );
-  }
 
   const placeholders = [
     "I want to feel safe in love.",

@@ -47,24 +47,7 @@ export default function TransitsBeta() {
   
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [isAuthorized, setIsAuthorized] = useState(false);
-
-  useEffect(() => {
-    const betaEnabled = getBetaFeaturesEnabled();
-    if (!betaEnabled) {
-      setLocation("/");
-    } else {
-      setIsAuthorized(true);
-    }
-  }, [setLocation]);
-
-  if (!isAuthorized) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div>Loading...</div>
-      </div>
-    );
-  }
+  // All features are now free and accessible - no beta check needed
 
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(currentMonth);
