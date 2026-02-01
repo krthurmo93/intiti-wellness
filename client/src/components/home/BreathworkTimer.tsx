@@ -133,7 +133,15 @@ export function BreathworkTimer() {
         </h3>
       </div>
 
-      <div className="flex flex-col gap-4 mb-8 md:flex-row md:flex-wrap">
+      <div 
+        className="flex flex-col gap-4 mb-8 md:flex-row md:flex-wrap"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+          marginBottom: '2rem'
+        }}
+      >
         {exercises.map((ex) => (
           <Button
             key={ex.id}
@@ -217,7 +225,7 @@ export function BreathworkTimer() {
               className="w-48 h-48 rounded-full flex flex-col items-center justify-center text-center relative"
               style={{
                 background: isGoldenDawn
-                  ? `radial-gradient(circle at 30% 10%, ${GoldenDawnTheme.primary.gold}40 0%, ${GoldenDawnTheme.primary.warmOrange}60 50%, ${GoldenDawnTheme.surface.backgroundSolid} 100%)`
+                  ? `radial-gradient(circle at 30% 10%, ${GoldenDawnTheme.primary.gold}40 0%, ${GoldenDawnTheme.primary.deepOrange}60 50%, ${GoldenDawnTheme.surface.backgroundSolid} 100%)`
                   : colors.isDark
                     ? 'radial-gradient(circle at 30% 10%, rgba(139, 92, 246, 0.4) 0%, rgba(88, 28, 135, 0.6) 50%, rgba(30, 27, 75, 0.9) 100%)'
                     : 'radial-gradient(circle at 30% 10%, #e0f2ff 0%, #edf2ff 50%, #fdf7ff 100%)',
@@ -239,7 +247,7 @@ export function BreathworkTimer() {
                   className="absolute inset-0 rounded-full"
                   style={{
                     background: isGoldenDawn
-                      ? `radial-gradient(circle at 30% 10%, ${GoldenDawnTheme.primary.gold}33 0%, ${GoldenDawnTheme.primary.warmOrange}1A 50%, transparent 100%)`
+                      ? `radial-gradient(circle at 30% 10%, ${GoldenDawnTheme.primary.gold}33 0%, ${GoldenDawnTheme.primary.deepOrange}1A 50%, transparent 100%)`
                       : colors.isDark
                         ? 'radial-gradient(circle at 30% 10%, rgba(139, 92, 246, 0.2) 0%, rgba(168, 85, 247, 0.1) 50%, transparent 100%)'
                         : 'radial-gradient(circle at 30% 10%, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 50%, transparent 100%)',

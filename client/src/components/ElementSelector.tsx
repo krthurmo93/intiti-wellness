@@ -92,7 +92,14 @@ export function ElementSelector({ onSelect, showTitle = true }: ElementSelectorP
         </motion.div>
       )}
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+      <div 
+        className="grid grid-cols-2 gap-3 md:grid-cols-3"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+          gap: '0.75rem'
+        }}
+      >
         {elements.map(({ id, name, icon: Icon, colors: elementColors, label }, index) => {
           const isSelected = selectedElement === id;
           const isGoldenDawn = id === "golden_dawn";

@@ -94,7 +94,15 @@ export function MoodCheckIn() {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-2 mb-4">
+      <div 
+        className="grid grid-cols-3 gap-2 mb-4"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+          gap: '0.5rem',
+          marginBottom: '1rem'
+        }}
+      >
             {moodOptions.map((mood) => {
               const { label, color } = moodLabels[mood];
               const isSelected = selectedMood === mood;
