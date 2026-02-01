@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, Moon, ChevronLeft, ChevronRight } from "lucide-react";
 import { useElementTheme } from "@/lib/element-theme";
-import { getBetaFeaturesEnabled } from "@/lib/storage";
 import { isGoldenDawnActive } from "@/lib/golden-dawn-styles";
 import { calculateMoonPhase } from "@/lib/astrology";
 import { moonPhaseDescriptions } from "@shared/schema";

@@ -32,7 +32,6 @@ import {
 } from "@/components/ui/accordion";
 import { useElementTheme } from "@/lib/element-theme";
 import { isGoldenDawnActive, getGoldenDawnBackgroundClasses } from "@/lib/golden-dawn-styles";
-import { getBetaFeaturesEnabled } from "@/lib/storage";
 import { useAuth } from "@/hooks/useAuth";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";

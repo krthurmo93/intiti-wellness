@@ -54,7 +54,6 @@ import {
 import { useElementTheme } from "@/lib/element-theme";
 import { getGoldenDawnCardStyle, isGoldenDawnActive, getGoldenDawnButtonClasses, getGoldenDawnBackgroundClasses, getGoldenDawnCardClasses, getGoldenDawnTextColors, getGoldenDawnInputStyle } from "@/lib/golden-dawn-styles";
 import { 
-  getBetaFeaturesEnabled, 
   getSavedSubliminals,
   saveSubliminal,
   updateSubliminalTitle,

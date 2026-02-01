@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ArrowLeft, Heart, Sparkles, User, Users, Sun, Moon, Sunrise, MessageCircle, Zap, Stars, ChevronDown, ChevronUp } from "lucide-react";
 import { useElementTheme } from "@/lib/element-theme";
-import { getUserProfile, getBetaFeaturesEnabled, getSpiritualStyle, canAccessGoldenDawn } from "@/lib/storage";
+import { getUserProfile, getSpiritualStyle, canAccessGoldenDawn } from "@/lib/storage";
 import { isGoldenDawnActive } from "@/lib/golden-dawn-styles";
 import { CityAutocomplete } from "@/components/CityAutocomplete";
 import { fetchBirthChart, type FullBirthChart } from "@/lib/astrology";
