@@ -30,11 +30,6 @@ workflows:
       - name: Set up code signing
         script: |
           xcode-project use-profiles
-      - name: Increment build number
-        script: |
-          cd ios/App
-          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" || echo 0)
-          agvtool new-version -all $((LATEST_BUILD_NUMBER + 1))
       - name: Build IPA for App Store
         script: |
           xcode-project build-ipa \
@@ -46,7 +41,3 @@ workflows:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
       - ios/App/App.xcworkspace
-    publishing:
-      app_store_connect:
-        auth: integration
-        submit_to_testflight: true
