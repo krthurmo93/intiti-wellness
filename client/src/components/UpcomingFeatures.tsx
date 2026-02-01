@@ -107,7 +107,14 @@ export function UpcomingFeatures() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div 
+        className="grid grid-cols-2 gap-3"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+          gap: '0.75rem'
+        }}
+      >
         {features.map((feature, index) => {
           const Icon = feature.icon;
           
