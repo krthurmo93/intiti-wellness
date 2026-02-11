@@ -58,8 +58,8 @@ export default function Home() {
           style={goldenDawnGlow}
         />
       )}
-      <div className={`${colors.overlay} min-h-screen transition-colors duration-500 relative z-10`}>
-        <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className={`${colors.overlay} min-h-screen-safe transition-colors duration-500 relative z-10`}>
+        <div className="max-w-2xl mx-auto px-4 py-8 pb-safe-nav">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}

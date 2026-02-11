@@ -559,8 +559,52 @@
     @apply border-border;
   }
 
+  html {
+    height: 100%;
+    height: -webkit-fill-available;
+  }
+
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .font-serif, h1, h2, h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .min-h-screen-safe {
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+  }
+
+  .h-screen-safe {
+    height: 100vh;
+    height: 100dvh;
+    height: -webkit-fill-available;
+  }
+
+  .pb-safe-nav {
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0px));
   }
 }
 

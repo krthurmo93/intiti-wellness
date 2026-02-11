@@ -87,8 +87,8 @@ export default function SettingsPage() {
       className="min-h-screen transition-colors duration-500"
       style={{ background: colors.gradientStyle }}
     >
-      <div className={`${colors.overlay} min-h-screen transition-colors duration-500`}>
-        <div className="max-w-2xl mx-auto px-4 py-8 pb-32">
+      <div className={`${colors.overlay} min-h-screen-safe transition-colors duration-500`}>
+        <div className="max-w-2xl mx-auto px-4 py-8 pb-safe-nav">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}

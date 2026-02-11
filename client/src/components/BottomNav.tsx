@@ -32,7 +32,10 @@ export function BottomNav() {
   };
 
   return (
-    <nav className={`fixed bottom-0 left-0 right-0 backdrop-blur-md border-t z-50 safe-area-bottom ${navBgClass}`}>
+    <nav 
+      className={`fixed bottom-0 left-0 right-0 backdrop-blur-md border-t z-50 ${navBgClass}`}
+      style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
+    >
       <div className="max-w-2xl mx-auto px-4">
         <div className="flex items-center justify-around py-2">
           {navItems.map(({ path, icon: Icon, label }) => {
