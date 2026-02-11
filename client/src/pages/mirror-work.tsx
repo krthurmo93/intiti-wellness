@@ -238,6 +238,19 @@ export default function MirrorWork() {
     };
   }, [isPlaying, scrollSpeed, currentSet.affirmations.length]);
 
+  useEffect(() => {
+    if (stream && cameraActive && videoRef.current) {
+      const video = videoRef.current;
+      video.setAttribute("autoplay", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+      video.srcObject = stream;
+      video.play().catch((playErr) => {
+        console.warn("Auto-play failed, user interaction may be needed:", playErr);
+      });
+    }
+  }, [stream, cameraActive]);
+
   const startCamera = useCallback(async () => {
     try {
       setCameraError(null);
@@ -253,17 +266,6 @@ export default function MirrorWork() {
         audio: true
       });
       
-      if (videoRef.current) {
-        videoRef.current.setAttribute("autoplay", "");
-        videoRef.current.setAttribute("playsinline", "");
-        videoRef.current.setAttribute("webkit-playsinline", "");
-        videoRef.current.srcObject = mediaStream;
-        try {
-          await videoRef.current.play();
-        } catch (playErr) {
-          console.warn("Auto-play failed, user interaction may be needed:", playErr);
-        }
-      }
       setStream(mediaStream);
       setCameraActive(true);
     } catch (err: any) {
@@ -623,7 +625,16 @@ export default function MirrorWork() {
                 ) : (
                   <>
                     <video
-                      ref={videoRef}
+                      ref={(el) => {
+                        videoRef.current = el;
+                        if (el && stream && !el.srcObject) {
+                          el.setAttribute("autoplay", "");
+                          el.setAttribute("playsinline", "");
+                          el.setAttribute("webkit-playsinline", "");
+                          el.srcObject = stream;
+                          el.play().catch(() => {});
+                        }
+                      }}
                       autoPlay
                       playsInline
                       muted
