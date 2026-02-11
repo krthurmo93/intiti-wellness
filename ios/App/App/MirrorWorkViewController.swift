@@ -11,11 +11,17 @@ class MirrorWorkViewController: CAPBridgeViewController {
         if #available(iOS 15.0, *) {
             webConfig.allowsAirPlayForMediaPlayback = true
         }
+        webConfig.preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")
         return webConfig
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        webView?.uiDelegate = self
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         webView?.uiDelegate = self
     }
 
