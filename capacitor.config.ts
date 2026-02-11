@@ -5,7 +5,12 @@ const config: CapacitorConfig = {
   appName: 'Intiti',
   webDir: 'dist/public',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
+    iosScheme: 'https'
+  },
+  ios: {
+    allowsLinkPreview: false,
+    contentInset: 'automatic',
   },
   plugins: {
     SplashScreen: {

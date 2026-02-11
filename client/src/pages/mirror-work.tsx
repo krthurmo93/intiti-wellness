@@ -241,6 +241,13 @@ export default function MirrorWork() {
   const startCamera = useCallback(async () => {
     try {
       setCameraError(null);
+      
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        setCameraError("Camera is not supported on this device or browser.");
+        setCameraActive(false);
+        return;
+      }
+
       const mediaStream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: "user", width: { ideal: 1280 }, height: { ideal: 720 } },
         audio: true
@@ -248,12 +255,26 @@ export default function MirrorWork() {
       
       if (videoRef.current) {
         videoRef.current.srcObject = mediaStream;
+        try {
+          await videoRef.current.play();
+        } catch (playErr) {
+          console.warn("Auto-play failed, user interaction may be needed:", playErr);
+        }
       }
       setStream(mediaStream);
       setCameraActive(true);
-    } catch (err) {
+    } catch (err: any) {
       console.error("Camera access error:", err);
-      setCameraError("Unable to access camera. Please allow camera permissions.");
+      const errorName = err?.name || '';
+      if (errorName === 'NotAllowedError' || errorName === 'PermissionDeniedError') {
+        setCameraError("Camera permission denied. Please go to Settings and allow camera access for Intiti.");
+      } else if (errorName === 'NotFoundError' || errorName === 'DevicesNotFoundError') {
+        setCameraError("No camera found on this device.");
+      } else if (errorName === 'NotReadableError' || errorName === 'TrackStartError') {
+        setCameraError("Camera is in use by another app. Please close other apps using the camera and try again.");
+      } else {
+        setCameraError("Unable to access camera. Please check your permissions in Settings.");
+      }
       setCameraActive(false);
     }
   }, []);
