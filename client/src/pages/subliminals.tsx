@@ -435,8 +435,8 @@ export default function Subliminals() {
       className="min-h-screen transition-colors duration-500"
       style={{ background: colors.gradientStyle }}
     >
-      <div className={`${colors.overlay} min-h-screen transition-colors duration-500`}>
-      <div className="container mx-auto px-4 py-6 pb-32 max-w-2xl">
+      <div className={`${colors.overlay} min-h-screen-safe transition-colors duration-500`}>
+      <div className="container mx-auto px-4 py-6 pb-safe-nav max-w-2xl">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

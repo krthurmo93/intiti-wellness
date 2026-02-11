@@ -49,7 +49,7 @@ export default function Home() {
 
   return (
     <div 
-      className="min-h-screen transition-colors duration-500 relative"
+      className="min-h-screen-safe transition-colors duration-500 relative"
       style={{ background: colors.gradientStyle }}
     >
       {isGoldenDawn && (
@@ -164,7 +164,6 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div className="h-32" />
         </div>
       </div>
     </div>

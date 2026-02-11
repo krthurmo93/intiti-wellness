@@ -360,8 +360,8 @@ export default function MirrorWork() {
       className="min-h-screen transition-colors duration-500 relative"
       style={{ background: colors.gradientStyle }}
     >
-      <div className={`${colors.overlay} min-h-screen transition-colors duration-500 relative z-10`}>
-        <div className="max-w-2xl mx-auto px-4 py-6 pb-24">
+      <div className={`${colors.overlay} min-h-screen-safe transition-colors duration-500 relative z-10`}>
+        <div className="max-w-2xl mx-auto px-4 py-6 pb-safe-nav">
           <div className="flex items-center justify-between mb-6">
             <Link href="/">
               <Button 

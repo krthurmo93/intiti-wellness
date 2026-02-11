@@ -152,8 +152,8 @@ export default function DreamJournalBeta() {
         className="min-h-screen transition-colors duration-500"
         style={{ background: colors.gradientStyle }}
       >
-        <div className={`${colors.overlay} min-h-screen transition-colors duration-500`}>
-          <div className="max-w-2xl mx-auto px-4 py-8">
+        <div className={`${colors.overlay} min-h-screen-safe transition-colors duration-500`}>
+          <div className="max-w-2xl mx-auto px-4 py-8 pb-safe-nav">
             <Card className={`p-8 ${colors.cardBorder} text-center`}>
               <BookOpen className="w-12 h-12 mx-auto mb-4 text-cyan-500" />
               <h2 className="font-serif text-2xl mb-4" style={{ color: colors.textPrimary }}>
@@ -177,8 +177,8 @@ export default function DreamJournalBeta() {
       className="min-h-screen transition-colors duration-500"
       style={{ background: colors.gradientStyle }}
     >
-      <div className={`${colors.overlay} min-h-screen transition-colors duration-500`}>
-        <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className={`${colors.overlay} min-h-screen-safe transition-colors duration-500`}>
+        <div className="max-w-2xl mx-auto px-4 py-8 pb-safe-nav">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -570,7 +570,6 @@ export default function DreamJournalBeta() {
             )}
           </div>
 
-          <div className="h-32" />
         </div>
       </div>
     </div>

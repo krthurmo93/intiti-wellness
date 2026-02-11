@@ -23,7 +23,6 @@ export default function ChartPage() {
             <MyChart />
           </motion.div>
 
-          <div className="h-24" />
         </div>
       </div>
     </div>
