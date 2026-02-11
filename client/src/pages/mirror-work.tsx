@@ -254,6 +254,9 @@ export default function MirrorWork() {
       });
       
       if (videoRef.current) {
+        videoRef.current.setAttribute("autoplay", "");
+        videoRef.current.setAttribute("playsinline", "");
+        videoRef.current.setAttribute("webkit-playsinline", "");
         videoRef.current.srcObject = mediaStream;
         try {
           await videoRef.current.play();
@@ -295,7 +298,16 @@ export default function MirrorWork() {
     if (!stream) return;
     
     chunksRef.current = [];
-    const mediaRecorder = new MediaRecorder(stream, { mimeType: "video/webm" });
+    const mimeType = MediaRecorder.isTypeSupported("video/webm;codecs=vp9")
+      ? "video/webm;codecs=vp9"
+      : MediaRecorder.isTypeSupported("video/webm")
+        ? "video/webm"
+        : MediaRecorder.isTypeSupported("video/mp4")
+          ? "video/mp4"
+          : "";
+    const recorderOptions: MediaRecorderOptions = mimeType ? { mimeType } : {};
+    const mediaRecorder = new MediaRecorder(stream, recorderOptions);
+    const usedMimeType = mediaRecorder.mimeType || mimeType || "video/webm";
     
     mediaRecorder.ondataavailable = (e) => {
       if (e.data.size > 0) {
@@ -304,7 +316,7 @@ export default function MirrorWork() {
     };
     
     mediaRecorder.onstop = () => {
-      const blob = new Blob(chunksRef.current, { type: "video/webm" });
+      const blob = new Blob(chunksRef.current, { type: usedMimeType });
       const videoUrl = URL.createObjectURL(blob);
       const recording: MirrorRecording = {
         id: Date.now().toString(),
@@ -535,7 +547,8 @@ export default function MirrorWork() {
                               onClick={() => {
                                 const a = document.createElement("a");
                                 a.href = rec.videoUrl;
-                                a.download = `mirror-work-${rec.date.split("T")[0]}.webm`;
+                                const ext = rec.blob.type.includes("mp4") ? "mp4" : "webm";
+                                a.download = `mirror-work-${rec.date.split("T")[0]}.${ext}`;
                                 a.click();
                               }}
                               style={{ color: colors.textSecondary }}

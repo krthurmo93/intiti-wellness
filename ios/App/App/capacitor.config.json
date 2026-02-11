@@ -3,7 +3,16 @@
 	"appName": "Intiti",
 	"webDir": "dist/public",
 	"server": {
-		"androidScheme": "https"
+		"androidScheme": "https",
+		"iosScheme": "https"
+	},
+	"ios": {
+		"allowsLinkPreview": false,
+		"contentInset": "never",
+		"backgroundColor": "#07091A",
+		"preferredContentMode": "mobile",
+		"scrollEnabled": true,
+		"webContentsDebuggingEnabled": true
 	},
 	"plugins": {
 		"SplashScreen": {

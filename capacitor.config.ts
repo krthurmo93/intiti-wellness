@@ -14,6 +14,7 @@ const config: CapacitorConfig = {
     backgroundColor: '#07091A',
     preferredContentMode: 'mobile',
     scrollEnabled: true,
+    webContentsDebuggingEnabled: true,
   },
   plugins: {
     SplashScreen: {
